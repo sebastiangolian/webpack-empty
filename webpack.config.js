@@ -8,6 +8,9 @@ module.exports = {
         vendor: './src/vendor.js',
         main: './src/main.js'
     },
+    output: {
+        filename: './js/[name].[contenthash].js',
+    },  
     module: {
         rules: [
             {
@@ -39,13 +42,6 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    // {
-                    //     loader: MiniCssExtractPlugin.loader,
-                    //     options: {
-                    //         publicPath: 'scss',
-                    //     },
-                    // },
-                    //"style-loader",
                     MiniCssExtractPlugin.loader,
                     "css-loader",
                     "sass-loader"
