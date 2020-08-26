@@ -4,6 +4,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+    entry: {
+        vendor: './src/vendor.js',
+        main: './src/main.js'
+    },
     module: {
         rules: [
             {
@@ -35,7 +39,14 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    "style-loader",
+                    // {
+                    //     loader: MiniCssExtractPlugin.loader,
+                    //     options: {
+                    //         publicPath: 'scss',
+                    //     },
+                    // },
+                    //"style-loader",
+                    MiniCssExtractPlugin.loader,
                     "css-loader",
                     "sass-loader"
                 ]
@@ -49,7 +60,7 @@ module.exports = {
             filename: "./index.html"
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
+            filename: "./css/[name].[contenthash].css",
             chunkFilename: "[id].css"
         })
     ]
