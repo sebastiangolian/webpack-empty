@@ -53,7 +53,8 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebPackPlugin({
             template: "./src/index.html",
-            filename: "./index.html"
+            filename: "./index.html",
+            favicon: "./src/favicon.ico"
         }),
         new MiniCssExtractPlugin({
             filename: "./css/[name].[contenthash].css",
