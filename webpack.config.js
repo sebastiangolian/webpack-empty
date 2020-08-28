@@ -9,7 +9,7 @@ module.exports = {
         main: './src/main.js'
     },
     output: {
-        filename: './js/[name].[contenthash].js',
+        filename: './js/[name].[hash].js',
     },  
     module: {
         rules: [
@@ -30,7 +30,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|svg|jpg|gif|ico)$/,
                 use: {
                     loader: 'file-loader',
                     options: {
@@ -54,10 +54,11 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "./index.html",
-            favicon: "./src/favicon.ico"
+            favicon: "./src/favicon.ico",
+            minify: true
         }),
         new MiniCssExtractPlugin({
-            filename: "./css/[name].[contenthash].css",
+            filename: "./css/[name].[hash].css",
             chunkFilename: "[id].css"
         })
     ]
